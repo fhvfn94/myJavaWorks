@@ -1,5 +1,7 @@
 package methods;
 
+import java.util.Objects;
+
 public class boxWithFruits {
     private int numberOfFruits; // Число фруктов
     private final String typeOfFruits; // Какие фрукты тут лежат. Это константа
@@ -39,5 +41,22 @@ public class boxWithFruits {
     //четвертый метод - заполняем ящик
     public void fillBox() {
         numberOfFruits = capacity;
+    }
+
+    public int getNumberOfFruits() {
+        return numberOfFruits;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        boxWithFruits that = (boxWithFruits) o;
+        return numberOfFruits == that.numberOfFruits && capacity == that.capacity && typeOfFruits.equals(that.typeOfFruits) && varietyOfFruits.equals(that.varietyOfFruits);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numberOfFruits, typeOfFruits, varietyOfFruits, capacity);
     }
 }
